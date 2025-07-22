@@ -37,6 +37,25 @@ qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -serial stdio -d
 #display none to disable GUI
 
 # runs QEMU to emulate a Raspberry Pi 3B and boots your kernel image
+qemu-system-aarch64 -M raspi3b -kernel kernel8.img -display none -S -s
+# -M raspi3b: Emulates a Raspberry Pi 3B.
+# -kernel kernel8.img: Loads your kernel image.
+# -display none: Disables the graphical display.
+# -S: Freezes the CPU at startup (waiting for a debugger).
+# -s: Starts a GDB server on TCP port 1234.
+```
+## gdb
+
+```sh
+sudo apt-get install gdb-multiarch #cross platform
+gdb-multiarch
+```
+```sh
+#gdb
+file kernel8.elf #this allows you to inspect the elf, but you may not run it since it is arm64
+target remote :1234 # this debugs the remote qemu
+disassemble _start
+break _start
 ```
 
 ## ~~write bootable image to sdb~~
@@ -55,6 +74,7 @@ qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -serial stdio -d
 - we skip this part because we do not plan to write to a real rpi3b
 ```sh
 # writes the contents of nycuos.img directly to the SD card device /dev/sdb
+# lsblk
 # dd if=nycuos.img of=/dev/sdb 
 # The dd command is a Unix utility for copying and converting data at the byte level.
 ```
