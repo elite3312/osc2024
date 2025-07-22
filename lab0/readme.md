@@ -42,6 +42,16 @@ qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -serial stdio -d
 ## ~~write bootable image to sdb~~
 
 - do not write to /dev/sdb in wsl! It might damage the virtual disk!
+  - In WSL (Windows Subsystem for Linux), sdb usually does not exist or does not correspond to any real hardware device.
+  - instead, it is probably a swap file
+    
+    ```txt
+    Disk /dev/sdb: 186.04 MiB, 195080192 bytes, 381016 sectors
+    Disk model: Virtual Disk    
+    Units: sectors of 1 * 512 = 512 bytes
+    Sector size (logical/physical): 512 bytes / 512 bytes
+    I/O size (minimum/optimal): 512 bytes / 512 bytes
+    ```
 - we skip this part because we do not plan to write to a real rpi3b
 ```sh
 # writes the contents of nycuos.img directly to the SD card device /dev/sdb
