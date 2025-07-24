@@ -5,7 +5,7 @@
 ```sh
 wget https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-aarch64-none-elf.tar.xz
 tar -xf arm-gnu-toolchain-14.3.rel1-x86_64-aarch64-none-elf.tar.xz
-export PATH=$PWD/arm-gnu-toolchain-12.3.rel1-x86_64-aarch64-none-elf/bin:$PATH
+# export PATH=$PWD/arm-gnu-toolchain-12.3.rel1-x86_64-aarch64-none-elf/bin:$PATH
 export PATH=/home/perry/cross_compiler/arm-gnu-toolchain-14.3.rel1-x86_64-aarch64-none-elf/bin:$PATH
 ```
 
@@ -67,6 +67,8 @@ The memory-mapped I/O (MMIO) base address is set using the macro MMIO_BASE, whic
     Save the received character into buffer and compare with the command when recieved '\n'.
 
 ### Mailbox
+
+Get the hardware’s information 
 
 ### run
 
