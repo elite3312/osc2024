@@ -27,10 +27,13 @@ unsigned int big_to_little_endian(unsigned int value) {
 
 
 unsigned int big_to_little_endian_add(const char *address) {
-    unsigned int value = ((unsigned int)address[0] << 24) |
-                         ((unsigned int)address[1] << 16) |
-                         ((unsigned int)address[2] << 8) |
-                         (unsigned int)address[3];
+    // this name is misleading, it just converts the 4 bytes at the address to big endian
+    // If memory contains: 0x12 0x34 0x56 0x78 (big-endian)
+    unsigned int value = ((unsigned int)address[0] << 24) |  // 0x12000000
+                        ((unsigned int)address[1] << 16) |  // 0x00340000  
+                        ((unsigned int)address[2] << 8) |   // 0x00005600
+                        (unsigned int)address[3];           // 0x00000078
+    // Result: 0x12345678 (still big-endian!)
     return value;
 }
 
