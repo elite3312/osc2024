@@ -52,6 +52,10 @@ Links the object files into one executable(``kernel8.img`` in this case), reloca
 
 Map hardware on device into a memory address for IO.
 
+These memory addresses are predefined by the hardware manufacturer (Broadcom). They're not arbitrary - they're part of the BCM2835/BCM2836/BCM2837 System-on-Chip (SoC) specification.
+
+The volatile keyword tells the compiler these memory locations can change outside the program's control (hardware can modify them), preventing optimization that might cache values incorrectly.
+
 The memory-mapped I/O (MMIO) base address is set using the macro MMIO_BASE, which is typically defined in a header file (gpio.h). In your code, all UART register pointers (like AUX_MU_IO) are defined as offsets from MMIO_BASE
 
 ### uart.c
