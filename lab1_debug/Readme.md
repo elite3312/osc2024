@@ -22,6 +22,7 @@ cd lab1_debug
 /home/perry/cross_compiler/arm-gnu-toolchain-14.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gdb kernel8.elf
 
 # In GDB prompt:
+(gdb) file kernel8.elf
 (gdb) target remote localhost:1234
 (gdb) break main
 (gdb) continue
