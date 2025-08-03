@@ -202,3 +202,25 @@ ls -la kernel8.img
 ```
 
 
+
+## debug
+
+```sh
+#1st terminal
+cd lab2/kernel
+make
+qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -serial stdio -display none -initrd initramfs.cpio -dtb bcm2710-rpi-3-b-plus.dtb -s -S
+#2nd terminal
+cd lab2/kernel
+aarch64-none-elf-gdb kernel8.img
+```
+
+```sh
+#(gdb) 
+file kernel8.elf
+target remote localhost:1234
+break shell
+print (char*)cpio_base
+set $cpio = 0x8000000
+x/50s (char*)cpio_base #This shows up to 50 null-terminated strings starting from cpio_base.
+```
