@@ -60,9 +60,9 @@ In the ARMv8-A architecture, especially when working with AArch64 state, these t
 - **Masking**: Controlled by the `PSTATE.A` bit.
 - **Behavior**: Can be fatal or require system recovery; not typically used for routine interrupt handling.
 
-## updates in shell.c
+## updates
 
-el2 to el1
+el2 to el1 at the beginning of the start.S
 el1 to el0
 el0 to el1
 
