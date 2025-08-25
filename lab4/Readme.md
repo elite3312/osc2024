@@ -59,7 +59,7 @@ The physical address is determined in runtime, so we cannot know how large frame
 12. Show dynamic allocator and free by allocating 500 16byte chunck, show content and free, then malloc again
 
 ## Implementation Index
-```
+```c
 //structures
 typedef struct frame
 typedef struct freelist
@@ -96,5 +96,3 @@ void * malloc(unsigned long size)
 void free(void* ptr) 
 ```
 
-## TODO
-1. Add hardcode version to the vm 

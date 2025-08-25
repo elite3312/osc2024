@@ -14,7 +14,7 @@ kernel8.img: start.o $(OBJS)
 	aarch64-none-elf-objcopy -O binary kernel8.elf kernel8.img
 
 clean:
-	del kernel8.img kernel8.elf *.o 2>nul || echo off
+	rm -f kernel8.img kernel8.elf *.o
 
 run:
 	qemu-system-aarch64 -M raspi3b -kernel kernel8.img -d in_asm
